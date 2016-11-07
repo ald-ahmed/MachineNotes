@@ -1,0 +1,34 @@
+body {
+  font-family: Montserrat;
+
+}
+.chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+}
+
+
+.divider {
+  height: 1px;
+  width:100%;
+  display:block; /* for use on default inline elements like span */
+  margin: 9px 0;
+  margin-top: 3%;
+  margin-bottom: 3%;
+
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+img{
+  cursor:crosshair;;
+}
+
+.dataX,.dataY{
+  display:inline-block;
+}
