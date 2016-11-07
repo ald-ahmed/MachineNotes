@@ -32,7 +32,12 @@ img{
     padding: 10% 25%;
 }
 .annotate {
-    padding: 10%;
+padding: 5% 10%;
+}
+
+.table-container{
+  margin-top: 5%;
+  text-align: center;
 }
 nav {
     z-index: 99999999;

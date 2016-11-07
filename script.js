@@ -43,30 +43,38 @@ function fadeOut(element) {
   $(element).css('visibility', 'hidden');
 }
 
+$('.loginEmail').keypress(function (e) {
+  if (e.which == 13) {
+    $('.loginSubmit').click();
+    return false;
+  }
+});
+
 $('.loginSubmit').click(function (event) {
   if ($('.loginEmail').val().length !== 0) {
-    populateAnnotate();
-    fadeIn('.annotate');
-    setTimeout(function () {
-      $('.main').moveDown();
-    }, 500);
-
+    setupAnnotateHub();
   } else {
     fadeIn('.loginAlert');
   }
 });
 
 $('body').on('click', '.chip', function () {
-  populateAnnotate();
-  fadeIn('.annotate');
-  setTimeout(function () {
-    $('.main').moveDown();
-  }, 500);
-
+  setupAnnotateHub();
   $('.loginEmail').val($(this).text());
 });
 
-function populateAnnotate() {
+function setupAnnotateHub() {
+  refreshTable();
+  populateMediaAndOptions();
+  fadeIn('.annotate');
+
+  $(document).ajaxStop(function () {
+    $('.main').moveDown();
+  });
+
+}
+
+function populateMediaAndOptions() {
 
   $.ajax({
     type: 'GET',
@@ -94,7 +102,7 @@ function checkOut() {
     url: 'http://kitelore.com/api.php',
     data: 'request=checkOut',
     success: function (data) {
-        if (data == '') {
+        if (data === '') {
           data = 0;
         }
 
@@ -113,16 +121,32 @@ function checkOut() {
 
 $('img').click(function (e) {
     var parentOffset = $(this).offset();
-    $('.dataX').html(((e.pageX - parentOffset.left) / $(this).width()).toFixed(3) * 100);
-    $('.dataY').html(((e.pageY - parentOffset.top) / $(this).height()).toFixed(3) * 100);
+    $('.dataX').html((((e.pageX - parentOffset.left) / $(this).width()) * 100).toFixed(3) + ' %');
+    $('.dataY').html((((e.pageY - parentOffset.top) / $(this).height()) * 100).toFixed(3) + ' %');
   });
 
 $('img').mousemove(function (e) {
     var parentOffset = $(this).offset();
-    var relativeXPosition = ((e.pageX - parentOffset.left) / $(this).width()).toFixed(3) * 100;
-    var relativeYPosition = ((e.pageY - parentOffset.top) / $(this).height()) * 100;
-    $('.livePosition').html(relativeXPosition + ', ' + relativeYPosition);
+    var relativeXPosition = (((e.pageX - parentOffset.left) / $(this).width()) * 100).toFixed(3);
+    var relativeYPosition = (((e.pageY - parentOffset.top) / $(this).height()) * 100).toFixed(3);
+    $('.livePosition').html(relativeXPosition + ' %' + ', ' + relativeYPosition + ' %');
   });
+
+function refreshTable() {
+  $.ajax({
+    type: 'GET',
+    url: 'http://kitelore.com/api.php',
+    data: 'request=getTable',
+    success: function (data) {
+      $('.table-bordered').html(data);
+    },
+
+    error: function (xhr, type, exception) {
+      // if ajax fails display error alert
+      console.log('ajax error response type ' + type);
+    },
+  });
+}
 
 $('.annotateSubmit').click(function (event) {
 
@@ -143,7 +167,8 @@ $('.annotateSubmit').click(function (event) {
     url: 'http://kitelore.com/api.php',
     data: 'request=submitAnnotation&data=' + JSON.stringify(dataComplete),
     success: function (data) {
-
+      refreshTable();
+      populateMediaAndOptions();
     },
 
     error: function (xhr, type, exception) {
