@@ -26,9 +26,27 @@ body {
 }
 
 img{
-  cursor:crosshair;;
+  cursor:crosshair;
+}
+.login {
+    padding: 10% 25%;
+}
+.annotate {
+    padding: 10%;
+}
+nav {
+    z-index: 99999999;
+}
+input[type="checkbox"] {
+  transform:scale(1.5, 1.5);
 }
 
+.checkbox{
+  margin-bottom:3%;
+}
+.optionBucket{
+  font-size: 110%;
+}
 .dataX,.dataY{
   display:inline-block;
 }
