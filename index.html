@@ -10,7 +10,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yantramanav:300" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap-flat.min.css">
 
     <link rel="stylesheet" href="animate.css">
@@ -28,10 +28,16 @@
 
     <!-- Nav text -->
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-mellow ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Machine Notes</a>
+
+
+
             <div class="navbar-header">
+              <a class="navbar-brand" href="#1">
+                    <img style= "display:inline;" src="https://www.alleninstitute.org/media/filer_public/f2/c4/f2c4e884-8109-491a-9d62-8032fd16e806/logo_ai_desktop.png" width="55" height="25" class="d-inline-block align-top" alt="">
+                &nbsp Machine Notes
+               </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -43,7 +49,7 @@
 
     <div class="container-fluid col-md-12 main">
 
-    <section>
+    <section >
         <div class="login col-md-12">
             <div class="form-group">
                 <div class="alert alert-danger loginAlert" role="alert" style="visibility:hidden;">Email cannot be left blank.</div>
@@ -68,12 +74,17 @@
 
   </section>
 
-  <section>
+  <section class='fp-auto-height' >
 
-        <div class="annotate col-md-12" style="visibility:hidden;">
+        <div class="annotate col-md-12 fp-normal-scroll" style="visibility:hidden;">
+
+          <div class="progress">
+            <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" >
+            </div>
+          </div>
 
             <div class="img-container col-md-8">
-                <img class="img-responsive" src="">
+                <img class="img-responsive img-subject" src="">
             </div>
 
             <div class="col-md-4">
@@ -81,7 +92,7 @@
                 <div class="positionData ">
                     <h3>Position <small>  <div class="livePosition ">&nbsp</div></small></h3>
 
-                     Captured X-Position: <div class="dataX"></div><br> Captured Y-Position:<div class="dataY"></div><br>
+                     Captured X-Position: <div class="dataX"></div><br> Captured Y-Position: <div class="dataY"></div><br>
 
                 </div>
 

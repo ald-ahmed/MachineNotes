@@ -1,5 +1,8 @@
 body {
-  font-family: Montserrat;
+
+
+      font-family: 'Yantramanav', sans-serif;
+
 
 }
 .chip {
@@ -25,7 +28,16 @@ body {
   background-color: #e5e5e5;
 }
 
-img{
+.navbar-mellow {
+  background: -webkit-linear-gradient(to left, #5C258D , #4389A2); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #5C258D , #4389A2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+color: white;
+}
+
+.navbar-brand{
+  color: white;
+}
+.img-subject{
   cursor:crosshair;
 }
 .login {
