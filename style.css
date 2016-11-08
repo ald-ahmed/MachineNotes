@@ -58,6 +58,11 @@ input[type="checkbox"] {
   transform:scale(1.5, 1.5);
 }
 
+.annotate. {
+    height: 90vh;
+    overflow-y: scroll;
+}
+
 .checkbox{
   margin-bottom:3%;
 }
