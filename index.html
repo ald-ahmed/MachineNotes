@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="bootstrap-flat.min.css">
 
     <link rel="stylesheet" href="animate.css">
-    <link rel="stylesheet" href="onepage-scroll.css">
     <link rel="stylesheet" href="style.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,7 +48,7 @@
 
     <div class="container-fluid col-md-12 main">
 
-    <section >
+    <div class="section" >
         <div class="login col-md-12">
             <div class="form-group">
                 <div class="alert alert-danger loginAlert" role="alert" style="visibility:hidden;">Email cannot be left blank.</div>
@@ -72,11 +71,11 @@
 
         </div>
 
-  </section>
+  </div>
 
-  <section class='fp-auto-height' >
+  <div class="section" >
 
-        <div class="annotate col-md-12 fp-normal-scroll" style="visibility:hidden;">
+        <div class="annotate col-md-12 fp-normal-scroll" style="visibility:hidden;display:none;">
 
           <div class="progress">
             <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" >
@@ -84,13 +83,13 @@
           </div>
 
             <div class="img-container col-md-8">
-                <img class="img-responsive img-subject" src="">
+                <img class=" img-subject" src="">
             </div>
 
             <div class="col-md-4">
 
                 <div class="positionData ">
-                    <h3>Position <small>  <div class="livePosition ">&nbsp</div></small></h3>
+                    <h3>Position <small>  <div class="livePosition ">&nbsp </div></small></h3>
 
                      Captured X-Position: <div class="dataX"></div><br> Captured Y-Position: <div class="dataY"></div><br>
 
@@ -107,18 +106,17 @@
             </div>
 
             <div class="col-md-12 table-container">
-              <h3>Recent Annotations <small> <br>Here are the 5 most recent submission.</small></h3>
+              <h3>Previous Annotations </h3>
   <div class=" table-bordered table-responsive">
   </div>
             </div>
         </div>
 
-      </section>
+      </div>
 
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-        <script src="jquery.onepage-scroll.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="script.js"></script>

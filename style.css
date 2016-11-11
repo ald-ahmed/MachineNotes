@@ -41,14 +41,13 @@ color: white;
   cursor:crosshair;
 }
 .login {
-    padding: 10% 25%;
+    padding: 0% 25%;
 }
 .annotate {
-padding: 5% 10%;
+padding:0% 5%;
 }
 
 .table-container{
-  margin-top: 5%;
   text-align: center;
 }
 nav {
@@ -58,13 +57,43 @@ input[type="checkbox"] {
   transform:scale(1.5, 1.5);
 }
 
+tr:hover {
+    background-color: #d7d7d7;
+}
+
+tr{
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+
 .annotate{
-    height: 90vh;
-    overflow-y: scroll;
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+.annotateSubmit {
+    display: block;
+    height: 7vh;
+    left: 0;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.img-subject {
+    width: 100%;
 }
 
 .checkbox{
   margin-bottom:3%;
+}
+
+.table-bordered.table-responsive {
+    margin-bottom: 3%;
+}
+
+.deleteRow {
+  background-color:tomato;
+  cursor: pointer;
 }
 .optionBucket{
   font-size: 110%;
