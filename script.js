@@ -1,40 +1,67 @@
+/*
+
+Scrolling plugin
+
+*/
+//--------------------------------------------------------
 $('.main').onepage_scroll({
-  sectionContainer: 'section',     // sectionContainer accepts any kind of selector in case you don't want to use section
-  easing: 'ease-in-out',                  // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in",
-  // "ease-out", "ease-in-out", or even cubic bezier value such as "cubic-bezier(0.175, 0.885, 0.420, 1.310)"
-  animationTime: 1200,             // AnimationTime let you define how long each section takes to animate
-  pagination: false,                // You can either show or hide the pagination. Toggle true for show, false for hide.
-  updateURL: false,                // Toggle this true if you want the URL to be updated automatically when the user scroll to each page.
-  beforeMove: function (index) {},  // This option accepts a callback function. The function will be called before the page moves.
+    sectionContainer: 'section',
+    easing: 'ease-in-out',
+    animationTime: 1200,
+    pagination: false,
+    updateURL: false,
+    beforeMove: function (index) {},
 
-  afterMove: function (index) {
-  },   // This option accepts a callback function. The function will be called after the page moves.
+    afterMove: function (index) {},
 
-  loop: false,                     // You can have the page loop back to the top/bottom when the user navigates at up/down on the first/last page.
-  keyboard: true,                  // You can activate the keyboard controls
-  responsiveFallback: false,        // You can fallback to normal page scroll by defining the width of the browser in which
-  // you want the responsive fallback to be triggered. For example, set this to 600 and whenever
-  // the browser's width is less than 600, the fallback will kick in.
-  hybrid: true,
-  scrollOverflow: true,
-  direction: 'vertical',            // You can now define the direction of the One Page Scroll animation. Options available are "vertical" and "horizontal". The default value is "vertical".
-});
+    loop: false,
+    responsiveFallback: false,
+    hybrid: true,
+    scrollOverflow: true,
+    direction: 'vertical',
+  });
 
+
+
+/*
+
+name of folder where pics are located
+
+*/
+//--------------------------------------------------------
 var directory = 'data';
 
-$.ajax({
-  type: 'GET',
-  url: 'http://kitelore.com/api.php',
-  data: 'request=getUsers',
-  success: function (data) {
-    $('.chipBucket').html(data);
-  },
 
-  error: function (xhr, type, exception) {
-    // if ajax fails display error alert
-    console.log('ajax error response type ' + type);
-  },
-});
+/*
+
+call api and get chips of users (right below where you put email)
+
+*/
+//--------------------------------------------------------
+
+$.ajax({
+    type: 'GET',
+    url: 'http://kitelore.com/api.php',
+    data: 'request=getUsers',
+    success: function (data) {
+        $('.chipBucket').html(data);
+      },
+
+    error: function (xhr, type, exception) {
+        // if ajax fails display error alert
+        console.log('ajax error response type ' + type);
+      },
+  });
+
+
+
+
+/*
+
+Animations to fade in and fade out
+
+*/
+//--------------------------------------------------------
 
 function fadeIn(element) {
   $(element).addClass('animated');
@@ -48,25 +75,59 @@ function fadeOut(element) {
   $(element).css('visibility', 'hidden');
 }
 
+
+/*
+
+when enter is pressed while inputing email, the submit button will be triggered
+
+*/
+//--------------------------------------------------------
+
 $('.loginEmail').keypress(function (e) {
-  if (e.which == 13) {
-    $('.loginSubmit').click();
-    return false;
-  }
-});
+    if (e.which == 13) {
+      $('.loginSubmit').click();
+      return false;
+    }
+  });
+
+
+/*
+
+when the submit button next to email is clicked, we populate the annotation hub and scroll down to it
+
+*/
+//--------------------------------------------------------
 
 $('.loginSubmit').click(function (event) {
-  if ($('.loginEmail').val().length !== 0) {
-    setupAnnotateHub();
-  } else {
-    fadeIn('.loginAlert');
-  }
-});
+    if ($('.loginEmail').val().length !== 0) {
+      setupAnnotateHub();
+    } else {
+      fadeIn('.loginAlert');
+    }
+  });
+
+
+/*
+
+or if we just click on a user chip, we populate the annotation hub and scroll down to it
+
+*/
+//--------------------------------------------------------
 
 $('body').on('click', '.chip', function () {
-  setupAnnotateHub();
-  $('.loginEmail').val($(this).text());
-});
+    setupAnnotateHub();
+    $('.loginEmail').val($(this).text());
+  });
+
+
+
+
+/*
+
+we display the annotation hub, refresh the most recent submission table, and call populateMediaAndOptions
+
+*/
+//--------------------------------------------------------
 
 function setupAnnotateHub() {
   $('section:nth-child(2)').css('display', 'block');
@@ -76,113 +137,176 @@ function setupAnnotateHub() {
   fadeIn('.annotate');
 
   $(document).ajaxStop(function () {
-    $('.main').moveDown();
+      $('.main').moveDown();
   });
 
 }
 
+
+/*
+
+use this function to load the feature checkboxes and run checkOut(); to get the picture
+
+*/
+//--------------------------------------------------------
 function populateMediaAndOptions() {
 
-  $.ajax({
-    type: 'GET',
-    url: 'http://kitelore.com/api.php',
-    data: 'request=featureList',
-    success: function (data) {
-      $('.optionBucket').html(data);
-    },
+    $.ajax({
+        type: 'GET',
+        url: 'http://kitelore.com/api.php',
+        data: 'request=featureList',
+        success: function(data) {
+            $('.optionBucket').html(data);
+        },
 
-    error: function (xhr, type, exception) {
-      // if ajax fails display error alert
-      console.log('ajax error response type ' + type);
-    },
-  });
-  checkOut();
+        error: function(xhr, type, exception) {
+            // if ajax fails display error alert
+            console.log('ajax error response type ' + type);
+        },
+    });
+    checkOut();
 
 }
+
+
+
+/*
+
+get the picture from the server by looking up what was the last submitted picture.
+each picture is numbered, meaning the next picture to be loaded will be the last submited picture name + 1
+
+
+*/
+//--------------------------------------------------------
 
 var checkedOut;
+
 function checkOut() {
 
-  $.ajax({
-    type: 'GET',
-    url: 'http://kitelore.com/api.php',
-    data: 'request=checkOut',
-    success: function (data) {
-        if (data === '') {
-          data = 0;
-        }
+    $.ajax({
+        type: 'GET',
+        url: 'http://kitelore.com/api.php',
+        data: 'request=checkOut',
+        success: function(data) {
+            if (data === '') {
+                data = 0;
+            }
 
-        checkedOut = parseInt(data) + 1;
-        var progressBarValue = ((checkedOut * 100 / 10) + '%');
-        $('.img-subject').attr('src', directory + '/' + checkedOut + '.jpg');
-        $('.progress-bar').css('width',  progressBarValue);
+            checkedOut = parseInt(data) + 1;
+            var progressBarValue = ((checkedOut * 100 / 10) + '%');
+            $('.img-subject').attr('src', directory + '/' + checkedOut + '.jpg');
+            $('.progress-bar').css('width', progressBarValue);
 
-      },
+        },
 
-    error: function (xhr, type, exception) {
-      // if ajax fails display error alert
-      console.log('ajax error response type ' + type);
-    },
-  });
+        error: function(xhr, type, exception) {
+            // if ajax fails display error alert
+            console.log('ajax error response type ' + type);
+        },
+    });
 
 }
 
-$('.img-subject').click(function (e) {
+
+
+
+/*
+
+when hovering over the image, show live postion, and when clicked, capture it
+
+
+*/
+//--------------------------------------------------------
+
+$('.img-subject').click(function(e) {
     var parentOffset = $(this).offset();
     $('.dataX').html((((e.pageX - parentOffset.left) / $(this).width()) * 100).toFixed(3) + ' %');
     $('.dataY').html((((e.pageY - parentOffset.top) / $(this).height()) * 100).toFixed(3) + ' %');
-  });
+});
 
-$('.img-subject').mousemove(function (e) {
+$('.img-subject').mousemove(function(e) {
     var parentOffset = $(this).offset();
     var relativeXPosition = (((e.pageX - parentOffset.left) / $(this).width()) * 100).toFixed(3);
     var relativeYPosition = (((e.pageY - parentOffset.top) / $(this).height()) * 100).toFixed(3);
     $('.livePosition').html(relativeXPosition + ' %' + ', ' + relativeYPosition + ' %');
-  });
+});
+
+
+
+/*
+
+  refresh table by calling the data base (api)
+
+
+  */
+//--------------------------------------------------------
 
 function refreshTable() {
-  $.ajax({
-    type: 'GET',
-    url: 'http://kitelore.com/api.php',
-    data: 'request=getTable',
-    success: function (data) {
-      $('.table-bordered').html(data);
-    },
+    $.ajax({
+        type: 'GET',
+        url: 'http://kitelore.com/api.php',
+        data: 'request=getTable',
+        success: function(data) {
+            $('.table-bordered').html(data);
+        },
 
-    error: function (xhr, type, exception) {
-      // if ajax fails display error alert
-      console.log('ajax error response type ' + type);
-    },
-  });
+        error: function(xhr, type, exception) {
+            // if ajax fails display error alert
+            console.log('ajax error response type ' + type);
+        },
+    });
 }
 
-$('.annotateSubmit').click(function (event) {
 
-  var dataComplete = [];
 
-  dataComplete.push({ user: $('.loginEmail').val() });
-  dataComplete.push({ x: $('.dataX').text(), y: $('.dataY').text() });
-  dataComplete.push({ pic_id: checkedOut });
 
-  $('.optionBucket input[type="checkbox"]').each(function (index, ez) {
-    var element = $(this).attr('val');
-    var data = $(this).is(':checked');
-    dataComplete.push({ feature: element, status: data * 1 });
-  });
 
-  $.ajax({
-    type: 'POST',
-    url: 'http://kitelore.com/api.php',
-    data: 'request=submitAnnotation&data=' + JSON.stringify(dataComplete),
-    success: function (data) {
-      refreshTable();
-      populateMediaAndOptions();
-    },
+/*
 
-    error: function (xhr, type, exception) {
-      // if ajax fails display error alert
-      console.log('ajax error response type ' + type);
-    },
-  });
+  submit to database by aggreating the input/div values into dataComplete.
+  Push to database, and call refreshTable and populateMediaAndOptions
+
+
+  */
+//--------------------------------------------------------
+
+$('.annotateSubmit').click(function(event) {
+
+    var dataComplete = [];
+
+    dataComplete.push({
+        user: $('.loginEmail').val()
+    });
+    dataComplete.push({
+        x: $('.dataX').text(),
+        y: $('.dataY').text()
+    });
+    dataComplete.push({
+        pic_id: checkedOut
+    });
+
+    $('.optionBucket input[type="checkbox"]').each(function(index, ez) {
+        var element = $(this).attr('val');
+        var data = $(this).is(':checked');
+        dataComplete.push({
+            feature: element,
+            status: data * 1
+        });
+    });
+
+    $.ajax({
+        type: 'POST',
+        url: 'http://kitelore.com/api.php',
+        data: 'request=submitAnnotation&data=' + JSON.stringify(dataComplete),
+        success: function(data) {
+            refreshTable();
+            populateMediaAndOptions();
+        },
+
+        error: function(xhr, type, exception) {
+            // if ajax fails display error alert
+            console.log('ajax error response type ' + type);
+        },
+    });
 
 });
