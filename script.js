@@ -186,7 +186,13 @@ function checkOut() {
 
 }
 
-
+function checkOutSpecific(id) {
+  id = parseInt(id);
+  var progressBarValue = ((id * 100 / 10) + '%');
+  $('.img-subject').attr('src', directory + '/' + id + '.jpg');
+  $('.progress-bar').css('width', progressBarValue);
+  checkedOut = id;
+}
 
 
 /*
@@ -236,6 +242,7 @@ function refreshTable() {
     });
 }
 
+var tempCheck = -1;
 $('body').on('click', '.deleteRow', function () {
 
       $.ajax({
@@ -243,7 +250,10 @@ $('body').on('click', '.deleteRow', function () {
           url: 'http://kitelore.com/api.php',
           data: 'request=delete&data=' + this.id,
           success: function (data) {
+              tempCheck =  checkedOut;
+              checkOutSpecific(data);
               refreshTable();
+
             },
 
           error: function (xhr, type, exception) {
@@ -295,6 +305,10 @@ $('.annotateSubmit').click(function (event) {
         data: 'request=submitAnnotation&data=' + JSON.stringify(dataComplete),
         success: function (data) {
             refreshTable();
+            if (tempCheck != -1) {
+              checkedOut = tempCheck;
+            }
+
             populateMediaAndOptions();
           },
 
