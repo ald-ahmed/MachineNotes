@@ -1,8 +1,8 @@
 # MachineNotes
-a tool helping researchers annotate images for AI training data 
+A tool helping researchers annotate images for AI training data.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ald-ahmed/MachineNotes/master/hd.png" width="256" title="MachineNotes Logo">
+  <img src="https://raw.githubusercontent.com/ald-ahmed/MachineNotes/master/hd.png" width="900" title="MachineNotes Logo">
 </p>
 
 One of the hardest challenges a researcher can face is acquiring the training data necessary to train an AI project. This tool uses a simple, intuitive design in order to facilitate labeling image data by using JQuery, PHP, and MySQL. 
