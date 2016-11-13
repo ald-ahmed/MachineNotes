@@ -172,7 +172,7 @@ function checkOut() {
           }
 
           checkedOut = parseInt(data) + 1;
-          var progressBarValue = ((checkedOut * 100 / 10) + '%');
+          var progressBarValue = ((checkedOut * 100 / 500000) + '%');
           $('.img-subject').attr('src', directory + '/' + checkedOut + '.jpg');
           $('.progress-bar').css('width', progressBarValue);
 
