@@ -209,6 +209,12 @@ $('.img-subject').click(function (e) {
     $('.dataY').html((((e.pageY - parentOffset.top) / $(this).height()) * 100).toFixed(3) + ' %');
   });
 
+
+  $('.removePosition').click(function (e) {
+      $('.dataX').html('');
+      $('.dataY').html('');
+    });
+
 $('.img-subject').mousemove(function (e) {
     var parentOffset = $(this).offset();
     var relativeXPosition = (((e.pageX - parentOffset.left) / $(this).width()) * 100).toFixed(3);
