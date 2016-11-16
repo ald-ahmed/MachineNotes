@@ -239,6 +239,7 @@ function refreshTable() {
       data: 'request=getTable',
       success: function (data) {
           $('.table-bordered').html(data);
+          $('.removePosition').click();
         },
 
       error: function (xhr, type, exception) {
@@ -259,7 +260,6 @@ $('body').on('click', '.deleteRow', function () {
               tempCheck =  checkedOut;
               checkOutSpecific(data);
               refreshTable();
-
             },
 
           error: function (xhr, type, exception) {
