@@ -136,14 +136,14 @@ function populateMediaAndOptions() {
       data: 'request=featureList',
       success: function (data) {
           $('.optionBucket').html(data);
+          checkOut();
         },
 
       error: function (xhr, type, exception) {
-          // if ajax fails display error alert
+          populateMediaAndOptions();
           console.log('ajax error response type ' + type);
         },
     });
-  checkOut();
 
 }
 
