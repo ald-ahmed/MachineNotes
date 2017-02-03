@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Big Eyes",
+    "options": [
+      "yes",
+      "yes,very big",
+      "kinda",
+      "no"
+    ]
+  },
+  {
+    "title": "Cute or nah",
+    "options": [
+      "cute",
+      "fugly",
+      "no"
+    ]
+  }
+]

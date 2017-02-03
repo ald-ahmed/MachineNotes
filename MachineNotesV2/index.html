@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Machine Notes Hub</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="jquery.dynatable.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Yantramanav:300" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap-flat.min.css">
+
+    <link rel="stylesheet" href="animate.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <!-- Nav text -->
+
+    <nav class="navbar navbar-mellow ">
+        <div class="container-fluid">
+
+
+
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#1">
+                    <img style= "display:inline;" src="https://www.alleninstitute.org/media/filer_public/f2/c4/f2c4e884-8109-491a-9d62-8032fd16e806/logo_ai_desktop.png" width="55" height="25" class="d-inline-block align-top" alt="">
+                &nbsp Machine Notes
+               </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid col-md-12 main">
+
+    <div class="section" >
+        <div class="login col-md-12">
+            <div class="form-group">
+                <div class="alert alert-danger loginAlert" role="alert" style="visibility:hidden;">Email cannot be left blank.</div>
+
+                <label for="exampleInputEmail1">Email address</label>
+                <div class="input-group">
+                    <input type="text" class="form-control loginEmail" placeholder="Joe " aria-describedby="basic-addon2">
+                    <span class="input-group-addon" id="basic-addon2">@alleninstitute.org</span>
+                </div>
+                <small id="emailHelp" class="form-text text-muted">Press <b>Enter</b> to make a new user or select one from below.</small>
+
+            </div>
+
+            <button type="submit" class='btn btn-primary loginSubmit' for='login'>Submit</button>
+
+            <div class="divider"></div>
+<div class="chipBucket">
+
+</div>
+
+        </div>
+
+  </div>
+
+  <div class="section" >
+
+        <div class="annotate col-md-12 fp-normal-scroll" style="visibility:hidden;display:none;">
+
+          <div class="progress">
+            <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" >
+            </div>
+          </div>
+
+            <div class="img-container col-md-8">
+                <img class=" img-subject" src="">
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="positionData ">
+                    <h3>Pupil Position <small>  <div class="livePosition ">&nbsp </div></small></h3>
+
+                     Captured X-Position: <div class="dataX"></div><br> Captured Y-Position: <div class="dataY"></div><br>
+
+                </div>
+                <button type="submit" class="btn removePosition">Clear</button>
+
+                <div class="divider"></div>
+
+
+                <h3>Features <small></small></h3>
+
+                <script id="featureTemplate" type="text/x-jsrender">
+                <div>
+
+	            <h3 name="{{:title}}">{{:title}}</h3>
+	            {{for options}}
+	            <div class="checkbox"><label><input type="checkbox" name="{{:}}">{{:}}</label></div>
+	            {{/for}}
+
+	            </div>
+                </script>
+
+
+                <div class="optionBucket"></div>
+
+
+                <button type="submit" class="btn annotateSubmit">Submit</button>
+
+            </div>
+
+            <div class="col-md-12 table-container">
+              <h3>Previous Five Annotations (each feature has a row) </h3>
+
+            <div class="table-bordered table-responsive">
+
+            </div>
+
+            </div>
+        </div>
+
+      </div>
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script
+                src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+                integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+                crossorigin="anonymous"></script>
+        <link href="tabulator.css" rel="stylesheet">
+        <script type="text/javascript" src="tabulator.js"></script>
+
+        <script src="script.js"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/0.9.83/jsrender.min.js"></script>
+
+</body>
+
+</html>

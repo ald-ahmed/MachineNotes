@@ -1,0 +1,103 @@
+body {
+
+
+      font-family: 'Yantramanav', sans-serif;
+
+
+}
+.chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+}
+
+
+.divider {
+  height: 1px;
+  width:100%;
+  display:block; /* for use on default inline elements like span */
+  margin: 9px 0;
+  margin-top: 3%;
+  margin-bottom: 3%;
+
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+.navbar-mellow {
+  background: -webkit-linear-gradient(to left, #5C258D , #4389A2); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #5C258D , #4389A2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+color: white;
+}
+
+.navbar-brand{
+  color: white;
+}
+.img-subject{
+  cursor:crosshair;
+}
+.login {
+    padding: 0% 25%;
+}
+.annotate {
+padding:0% 5%;
+}
+
+.table-container{
+  text-align: center;
+}
+nav {
+    z-index: 99999999;
+}
+input[type="checkbox"] {
+  transform:scale(1.5, 1.5);
+}
+
+tr:hover {
+    background-color: #d7d7d7;
+}
+
+tr{
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+
+.annotate{
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+.annotateSubmit {
+    display: block;
+    height: 7vh;
+    left: 0;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.img-subject {
+    width: 100%;
+}
+
+.checkbox{
+  margin-bottom:3%;
+}
+
+.table-bordered.table-responsive {
+    margin-bottom: 3%;
+}
+
+.deleteRow {
+  background-color:tomato;
+  cursor: pointer;
+}
+.optionBucket{
+  font-size: 110%;
+}
+.dataX,.dataY{
+  display:inline-block;
+}
